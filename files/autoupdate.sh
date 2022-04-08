@@ -4,17 +4,17 @@ set -eu
 
 
 function check_updates {
-  LATEST=`curl -q https://tools.altipla.consulting/sergeant/release`
-  CURRENT=`cat ~/.config/sergeant/version`
+  LATEST=`curl -qs https://tools.altipla.consulting/sergeant/release`
+  CURRENT=`cat ~/.config/sergeant/release`
   if [ $LATEST != $CURRENT ]
   then
     echo
-    echo "╭――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――╮"
-    echo "│                                                                      │"
-    echo "│   Installation needs an update. Run the following command:           │"
-    echo "│   curl -q https://tools.altipla.consulting/sergeant/install | bash   │"
-    echo "│                                                                      │"
-    echo "╰――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――╯"
+    echo "╭―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――╮"
+    echo "│                                                                       │"
+    echo "│   Installation needs an update. Run the following command:            │"
+    echo "│   curl -qs https://tools.altipla.consulting/sergeant/install | bash   │"
+    echo "│                                                                       │"
+    echo "╰―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――╯"
     echo
   fi
 }
