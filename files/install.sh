@@ -19,24 +19,6 @@ sudo apt update
 sudo apt upgrade -y
 sudo apt autoremove -y
 
-# Install: Docker.
-if ! command -v docker &> /dev/null
-then
-  source /etc/os-release
-  sudo apt update
-  sudo apt install -y apt-transport-https ca-certificates curl gnupg-agent software-properties-common
-  curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-  sudo add-apt-repository -y "deb [arch=amd64] https://download.docker.com/linux/ubuntu $UBUNTU_CODENAME stable"
-  sudo apt update
-  sudo apt install -y docker-ce docker-ce-cli containerd.io
-  sudo usermod -aG docker $USER
-  sudo systemctl stop docker
-  sudo mkdir -p /home/docker
-  sudo sed -i 's#/usr/bin/dockerd#/usr/bin/dockerd -g /home/docker#' /lib/systemd/system/docker.service
-  sudo systemctl daemon-reload
-  sudo systemctl start docker
-fi
-
 # Install: Go.
 WANTED=1.17.3
 function install_go {
