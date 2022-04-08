@@ -12,7 +12,7 @@ function check_updates {
     echo "╭――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――╮"
     echo "│                                                                      │"
     echo "│   Installation needs an update. Run the following command:           │"
-    echo "│   curl -q https://tools.altipla.consulting/sergeant/install | sudo   │"
+    echo "│   curl -q https://tools.altipla.consulting/sergeant/install | bash   │"
     echo "│                                                                      │"
     echo "╰――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――╯"
     echo
