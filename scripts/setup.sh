@@ -2,6 +2,10 @@
 
 set -eux
 
+# Move to the HOME directory. The install script could have been run from a different
+# directory and some install commands like NPM or Go require a clean home directory to work.
+cd $HOME
+
 # Silence SSH logins.
 touch ~/.hushlogin
 
@@ -212,6 +216,12 @@ sudo apt install -y php7.0-cli
 # Install: Java 11.
 sudo apt install -y openjdk-11-jdk
 
+# Install: Autoupdate script.
+mkdir -p ~/.config/sergeant
+curl -q https://tools.altipla.consulting/sergeant/autoupdate.sh > ~/.config/sergeant/autoupdate.sh
+chmod +x ~/.config/sergeant/autoupdate.sh
+curl -q https://tools.altipla.consulting/sergeant/release > ~/.config/sergeant/release
+
 # Install: User configuration
 if [ ! -f ~/.config/user-bashrc.sh ]
 then
@@ -247,6 +257,9 @@ fi
   echo "alias kpods='kubectl get pods --field-selector=status.phase!=Succeeded -o wide'"
   echo "alias knodes='kubectl get nodes -o wide'"
   echo "source <(kubectl completion bash | sed 's/kubectl/k/g')"
+  echo
+  echo "# Autoupdate"
+  echo "~/.config/sergeant/autoupdate.sh"
   echo
 } > ~/.config/machine-bashrc.sh
 if ! grep '.config/machine-bashrc.sh' ~/.bashrc
