@@ -10,12 +10,12 @@ function check_updates {
   if [ $LATEST != $CURRENT ]
   then
     echo
-    echo "╭―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――╮"
-    echo "│                                                                       │"
-    echo "│   Installation needs an update. Run the following command:            │"
-    echo "│   curl -qs https://tools.altipla.consulting/sergeant/install | bash   │"
-    echo "│                                                                       │"
-    echo "╰―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――╯"
+    echo "╭――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――╮"
+    echo "│                                                                      │"
+    echo "│   Installation needs an update. Run the following command:           │"
+    echo "│   curl -s https://tools.altipla.consulting/sergeant/install | bash   │"
+    echo "│                                                                      │"
+    echo "╰――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――╯"
     echo
   else
     touch $LOCKFILE
