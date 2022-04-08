@@ -1,2 +1,4 @@
+
 # sergeant
-Script to bootstrap &amp; configure development machines.
+
+Script to bootstrap & configure development machines.
