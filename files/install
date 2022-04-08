@@ -218,7 +218,7 @@ cd $HOME
 
 # Install: Autoupdate script.
 mkdir -p ~/.config/sergeant
-curl -q https://tools.altipla.consulting/sergeant/autoupdate.sh > ~/.config/sergeant/autoupdate.sh
+curl -q https://tools.altipla.consulting/sergeant/autoupdate > ~/.config/sergeant/autoupdate.sh
 chmod +x ~/.config/sergeant/autoupdate.sh
 curl -q https://tools.altipla.consulting/sergeant/release > ~/.config/sergeant/release
 
