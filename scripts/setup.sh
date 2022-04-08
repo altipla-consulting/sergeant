@@ -11,8 +11,9 @@ sudo apt install -y wget tar curl autoconf jq git build-essential libnss3-tools
 echo 'Acquire::AllowUnsizedPackages true;' | sudo tee /etc/apt/apt.conf.d/50unsized
 
 # Upgrade packages.
-apt update
-apt upgrade -y
+sudo apt update
+sudo apt upgrade -y
+sudo apt autoremove -y
 
 # Install: Docker.
 if ! command -v docker &> /dev/null
