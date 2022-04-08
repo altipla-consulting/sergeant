@@ -213,8 +213,8 @@ sudo pip3 install httpie
 sudo add-apt-repository -y ppa:ondrej/php
 sudo apt install -y php7.0-cli
 
-# # Install: Java 11.
-# sudo apt install -y openjdk-11-jdk
+# Install: Java 11.
+sudo apt install -y openjdk-11-jdk
 
 # Install: Autoupdate script.
 mkdir -p ~/.config/sergeant
