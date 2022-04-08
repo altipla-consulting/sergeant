@@ -2,6 +2,7 @@
 
 set -eu
 
+LOCKFILE=$HOME/.config/sergeant/autoupdate.lock
 
 function check_updates {
   LATEST=`curl -qs https://tools.altipla.consulting/sergeant/release`
@@ -16,19 +17,17 @@ function check_updates {
     echo "│                                                                       │"
     echo "╰―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――╯"
     echo
+  else
+    touch $LOCKFILE
   fi
 }
 
-
-LOCKFILE=$HOME/.config/sergeant/autoupdate.lock
 if [[ ! -e $LOCKFILE ]]
 then
   check_updates
-  touch $LOCKFILE
 else
   if [[ "`find $LOCKFILE -mmin +60`" ]]
   then
     check_updates
-    touch $LOCKFILE
   fi
 fi
