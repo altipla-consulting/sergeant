@@ -5,7 +5,7 @@ set -eu
 
 function check_updates {
   LATEST=`curl -q https://tools.altipla.consulting/sergeant/release`
-  CURRENT=`cat /.config/sergeant/version`
+  CURRENT=`cat ~/.config/sergeant/version`
   if [ $LATEST != $CURRENT ]
   then
     echo
