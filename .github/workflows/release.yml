@@ -1,0 +1,44 @@
+
+on: 
+  release:
+    types: [created]
+
+jobs:
+  release:
+    name: Release
+    runs-on: ubuntu-latest
+
+    permissions:
+      id-token: write
+      contents: write
+
+    steps:
+    - name: Get the version
+      id: version
+      run: echo ::set-output name=VERSION::${GITHUB_REF#refs/tags/}
+
+    - name: Checkout code
+      uses: actions/checkout@master
+
+    - name: Setup gcloud SDK
+      uses: google-github-actions/setup-gcloud@v0
+      with:
+        project_id: altipla-tools
+        install_components: alpha
+
+    - name: Authenticate to Google Cloud
+      id: auth
+      uses: google-github-actions/auth@v0
+      with:
+        workload_identity_provider: projects/1060593636030/locations/global/workloadIdentityPools/github/providers/github
+        service_account: gha-sergeant@precise-truck-89123.iam.gserviceaccount.com
+        create_credentials_file: true
+    - name: Login to Google Cloud
+      run: |-
+        gcloud auth login --brief --cred-file="${{ steps.auth.outputs.credentials_file_path }}"
+
+    - name: Release
+      run: |-
+        echo ${{ steps.version.outputs.VERSION }} > release
+        gcloud alpha storage cp --cache-control 'public, max-age=10' files/setup.sh gs://tools.altipla.consulting/sergeant/setup.sh
+        gcloud alpha storage cp --cache-control 'public, max-age=10' files/autoupdate.sh gs://tools.altipla.consulting/sergeant/autoupdate.sh
