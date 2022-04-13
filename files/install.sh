@@ -198,6 +198,9 @@ sudo apt install -y php7.0-cli
 # Install: Java 11.
 sudo apt install -y openjdk-11-jdk
 
+# Install: SSH agent.
+sudo apt install -y keychain
+
 # Install: Autoupdate script.
 mkdir -p ~/.config/sergeant
 curl -q https://tools.altipla.consulting/sergeant/autoupdate > ~/.config/sergeant/autoupdate.sh
@@ -239,6 +242,9 @@ fi
   echo "alias kpods='kubectl get pods --field-selector=status.phase!=Succeeded -o wide'"
   echo "alias knodes='kubectl get nodes -o wide'"
   echo "source <(kubectl completion bash | sed 's/kubectl/k/g')"
+  echo
+  echo "# WSL SSL agent."
+  echo 'eval `keychain -q --eval --agents ssh id_rsa`'
   echo
   echo "# Autoupdate"
   echo "~/.config/sergeant/autoupdate.sh"
