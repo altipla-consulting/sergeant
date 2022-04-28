@@ -136,7 +136,10 @@ then
 fi
 
 # Install: Altipla tools.
-if ! command -v gendc &> /dev/null
+go install github.com/altipla-consulting/gendc@latest
+go install github.com/altipla-consulting/wave@latest
+go install github.com/altipla-consulting/reloader@latest
+if ! command -v gaestage &> /dev/null
 then
   curl https://europe-west1-apt.pkg.dev/doc/repo-signing-key.gpg | sudo apt-key add -
   echo 'deb https://europe-west1-apt.pkg.dev/projects/altipla-tools acpublic main' | sudo tee /etc/apt/sources.list.d/acpublic.list
