@@ -135,6 +135,10 @@ then
   install_stern
 fi
 
+# Install: Go private packages.
+git config --global url."ssh://git@github.com:".insteadOf "https://github.com"
+/usr/local/go/bin/go env -w GOPRIVATE=github.com/lavozdealmeria,github.com/altipla-consulting,go.buf.build
+
 # Install: Altipla tools.
 go install github.com/altipla-consulting/gendc@latest
 go install github.com/altipla-consulting/wave@latest
@@ -165,10 +169,6 @@ then
   sudo apt install -y google-cloud-sdk kubectl
 fi
 gcloud --quiet auth configure-docker
-
-# Install: Go private packages.
-git config --global url."ssh://git@github.com:".insteadOf "https://github.com"
-/usr/local/go/bin/go env -w GOPRIVATE=github.com/lavozdealmeria,github.com/altipla-consulting,go.buf.build
 
 # Install: actools.
 curl -L -o /tmp/actools https://tools.altipla.consulting/bin/actools
