@@ -171,6 +171,7 @@ then
   sudo apt install -y google-cloud-sdk kubectl
 fi
 gcloud --quiet auth configure-docker
+gcloud --quiet auth configure-docker europe-west1-docker.pkg.dev
 
 # Install: actools.
 curl -L -o /tmp/actools https://tools.altipla.consulting/bin/actools
