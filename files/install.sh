@@ -152,6 +152,8 @@ then
   sudo apt update
   sudo apt install -y tools/acpublic
 fi
+# Global install for vscode plugin.
+sudo cp ~/go/bin/ci /usr/local/bin/ci
 
 # Install: Preparation for internal CLI tools.
 INSTALLED=`apt -qq list apt-transport-artifact-registry --installed`
