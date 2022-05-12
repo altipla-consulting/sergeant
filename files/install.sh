@@ -254,6 +254,9 @@ fi
   echo "# WSL SSL agent."
   echo 'eval `keychain -q --eval --agents ssh id_rsa`'
   echo
+  echo "# Disable Docket Desktop ads."
+  echo 'export DOCKER_SCAN_SUGGEST=false'
+  echo
   echo "# Autoupdate"
   echo "~/.config/sergeant/autoupdate.sh"
   echo
