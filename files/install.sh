@@ -175,6 +175,10 @@ then
   sudo apt update
   sudo apt install -y google-cloud-sdk kubectl
 fi
+if ! command -v gke-gcloud-auth-plugin &> /dev/null
+then
+  sudo apt -y install google-cloud-sdk-gke-gcloud-auth-plugin
+fi
 gcloud --quiet auth configure-docker
 gcloud --quiet auth configure-docker europe-west1-docker.pkg.dev
 
@@ -247,6 +251,7 @@ fi
   echo "# Gcloud."
   echo "alias compute='gcloud compute'"
   echo "export KUBE_EDITOR=nano"
+  echo "export USE_GKE_GCLOUD_AUTH_PLUGIN=True"
   echo "alias k='kubectl'"
   echo "alias kls='kubectl config get-contexts'"
   echo "alias kuse='kubectl config use-context'"
