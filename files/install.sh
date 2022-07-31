@@ -38,9 +38,9 @@ then
 fi
 
 # Install: Buf.
-WANTED=1.0.0-rc11
+WANTED=1.7.0
 function install_buf {
-  curl -L https://github.com/bufbuild/buf/releases/download/v1.0.0-rc11/buf-Linux-x86_64 -o /tmp/buf
+  curl -sSL "https://github.com/bufbuild/buf/releases/download/v${WANTED}/buf-Linux-x86_64" -o /tmp/buf
   sudo mv /tmp/buf /usr/local/bin/buf
   chmod +x /usr/local/bin/buf
 }
