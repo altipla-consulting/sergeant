@@ -214,7 +214,9 @@ sudo apt install -y php7.0-cli
 sudo apt install -y openjdk-11-jdk
 
 # Install: SSH agent.
-sudo apt install -y keychain
+if grep -qi microsoft /proc/version; then
+  sudo apt install -y keychain
+fi
 
 # Install: Autoupdate script.
 mkdir -p ~/.config/sergeant
