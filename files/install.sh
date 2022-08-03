@@ -11,7 +11,7 @@ touch ~/.hushlogin
 
 # Basic global setup.
 sudo apt update
-sudo apt install -y wget tar curl autoconf jq git build-essential libnss3-tools
+sudo apt install -y wget tar curl autoconf jq git build-essential libnss3-tools unzip
 echo 'Acquire::AllowUnsizedPackages true;' | sudo tee /etc/apt/apt.conf.d/50unsized
 
 # Upgrade packages.
