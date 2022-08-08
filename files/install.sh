@@ -143,11 +143,11 @@ git config --global url."ssh://git@github.com:".insteadOf "https://github.com"
 /usr/local/go/bin/go env -w GOPRIVATE=github.com/lavozdealmeria,github.com/altipla-consulting,go.buf.build
 
 # Install: Altipla tools.
-go install github.com/altipla-consulting/gendc@latest
-go install github.com/altipla-consulting/wave@latest
-go install github.com/altipla-consulting/reloader@latest
-go install github.com/altipla-consulting/linter@latest
-go install github.com/altipla-consulting/ci@latest
+/usr/local/go/bin/go install github.com/altipla-consulting/gendc@latest
+/usr/local/go/bin/go install github.com/altipla-consulting/wave@latest
+/usr/local/go/bin/go install github.com/altipla-consulting/reloader@latest
+/usr/local/go/bin/go install github.com/altipla-consulting/linter@latest
+/usr/local/go/bin/go install github.com/altipla-consulting/ci@latest
 if ! command -v gaestage &> /dev/null
 then
   curl https://europe-west1-apt.pkg.dev/doc/repo-signing-key.gpg | sudo apt-key add -
