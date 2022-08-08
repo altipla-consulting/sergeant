@@ -188,20 +188,6 @@ sudo mv /tmp/actools /usr/local/bin/actools
 chmod +x /usr/local/bin/actools
 actools pull
 
-# Install: .NET Core.
-# Forcing 21.04 release as the new 21.10 version is not yet supported.
-wget https://packages.microsoft.com/config/ubuntu/21.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
-sudo dpkg -i packages-microsoft-prod.deb
-rm packages-microsoft-prod.deb
-sudo apt update
-sudo apt install -y dotnet-sdk-3.1 aspnetcore-runtime-3.1
-
-# Install: Entity Framework Core global tool.
-if ! dotnet tool list -g | grep -q dotnet-ef
-then
-  dotnet tool install --global dotnet-ef --version=5.0.0-rc.1.20451.13
-fi
-
 # Install: HTTPie.
 sudo apt install -y python3-pip
 sudo pip3 install httpie
@@ -212,11 +198,6 @@ sudo apt install -y php7.0-cli
 
 # Install: Java 11.
 sudo apt install -y openjdk-11-jdk
-
-# Install: SSH agent.
-if grep -qi microsoft /proc/version; then
-  sudo apt install -y keychain
-fi
 
 # Install: Autoupdate script.
 mkdir -p ~/.config/sergeant
@@ -260,9 +241,6 @@ fi
   echo "alias kpods='kubectl get pods --field-selector=status.phase!=Succeeded -o wide'"
   echo "alias knodes='kubectl get nodes -o wide'"
   echo "source <(kubectl completion bash | sed 's/kubectl/k/g')"
-  echo
-  echo "# WSL SSL agent."
-  echo 'eval `keychain -q --eval --agents ssh id_rsa`'
   echo
   echo "# Disable Docket Desktop ads."
   echo 'export DOCKER_SCAN_SUGGEST=false'
