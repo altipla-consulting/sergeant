@@ -158,6 +158,11 @@ fi
 # Global install for vscode plugin.
 sudo cp ~/go/bin/ci /usr/local/bin/ci
 
+# Install: Altipla Packages DEB repository.
+curl https://europe-west1-apt.pkg.dev/doc/repo-signing-key.gpg | sudo apt-key add -
+echo 'deb https://europe-west1-apt.pkg.dev/projects/altipla-packages altipla-apt main' | sudo tee /etc/apt/sources.list.d/altipla-apt.list
+sudo apt update
+
 # Install: Preparation for internal CLI tools.
 INSTALLED=`apt -qq list apt-transport-artifact-registry --installed`
 if [ -n "$INSTALLED" ]; then
