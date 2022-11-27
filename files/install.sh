@@ -193,6 +193,10 @@ sudo mv /tmp/actools /usr/local/bin/actools
 chmod +x /usr/local/bin/actools
 actools pull
 
+# Update devcontainers.
+docker pull europe-west1-docker.pkg.dev/altipla-tools/devcontainers/go:latest
+docker pull europe-west1-docker.pkg.dev/altipla-tools/devcontainers/node:latest
+
 # Install: HTTPie.
 sudo apt install -y python3-pip
 sudo pip3 install httpie
