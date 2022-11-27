@@ -236,8 +236,8 @@ fi
   echo "# Docker Compose."
   echo "export USR_ID=$(id -u)"
   echo "export GRP_ID=$(id -g)"
-  echo "alias dc='docker-compose'"
-  echo "alias dcrun='docker-compose run --rm'"
+  echo "alias dc='docker compose'"
+  echo "alias dcrun='docker compose run --rm'"
   echo "alias dps='docker ps --format=\"table {{.ID}}\t{{.Names}}\t{{.Ports}}\t{{.Status}}\"'"
   echo
   echo "# Gcloud."
