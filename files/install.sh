@@ -140,7 +140,7 @@ fi
 
 # Install: Go private packages.
 git config --global url."ssh://git@github.com:".insteadOf "https://github.com"
-/usr/local/go/bin/go env -w GOPRIVATE=github.com/lavozdealmeria,github.com/altipla-consulting,go.buf.build,gerrit.altipla.consulting
+/usr/local/go/bin/go env -w GOPRIVATE=github.com/lavozdealmeria,github.com/altipla-consulting,go.buf.build,buf.build,gerrit.altipla.consulting
 
 # Install: Altipla tools.
 /usr/local/go/bin/go install github.com/altipla-consulting/gendc@latest
