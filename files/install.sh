@@ -187,8 +187,7 @@ if ! command -v gke-gcloud-auth-plugin &> /dev/null
 then
   sudo apt -y install google-cloud-sdk-gke-gcloud-auth-plugin
 fi
-gcloud --quiet auth configure-docker
-gcloud --quiet auth configure-docker europe-west1-docker.pkg.dev
+gcloud --quiet auth configure-docker europe-west1-docker.pkg.dev,eu.gcr.io,gcr.io
 
 # Install: actools.
 curl -L -o /tmp/actools https://tools.altipla.consulting/bin/actools
