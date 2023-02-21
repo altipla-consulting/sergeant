@@ -89,7 +89,7 @@ fi
 # Install: mkcert.
 if ! command -v mkcert &> /dev/null
 then
-  curl -L -o /tmp/mkcert https://github.com/FiloSottile/mkcert/releases/download/v1.4.1/mkcert-v1.4.1-linux-amd64
+  curl -L -o /tmp/mkcert https://github.com/FiloSottile/mkcert/releases/download/v1.4.4/mkcert-v1.4.4-linux-amd64
   sudo mv /tmp/mkcert /usr/local/bin/mkcert
   chmod +x /usr/local/bin/mkcert
 fi
