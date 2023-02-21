@@ -200,8 +200,8 @@ docker pull europe-west1-docker.pkg.dev/altipla-tools/devcontainers/go:latest
 docker pull europe-west1-docker.pkg.dev/altipla-tools/devcontainers/node:latest
 
 # Install: Litestream
-wget -q -O /tmp/foo.dev https://github.com/benbjohnson/litestream/releases/download/v0.3.9/litestream-v0.3.9-linux-amd64.deb
-sudo dpkg -i /tmp/foo.dev
+wget -q -O /tmp/foo.deb https://github.com/benbjohnson/litestream/releases/download/v0.3.9/litestream-v0.3.9-linux-amd64.deb
+sudo dpkg -i /tmp/foo.deb
 rm /tmp/foo.deb
 
 # Install: PHP 8.0.
