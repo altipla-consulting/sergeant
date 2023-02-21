@@ -211,6 +211,14 @@ sudo apt install -y php8.0-cli
 # Install: Java 11.
 sudo apt install -y openjdk-11-jdk
 
+# Install: WSL utils.
+if grep -q icrosoft /proc/version; then
+  sudo add-apt-repository ppa:wslutilities/wslu
+  sudo apt update
+  sudo apt install wslu
+  sudo ln -s /usr/bin/wslview /usr/local/bin/xdg-open
+fi
+
 # Install: Autoupdate script.
 mkdir -p ~/.config/sergeant
 curl -q https://tools.altipla.consulting/sergeant/autoupdate > ~/.config/sergeant/autoupdate.sh
