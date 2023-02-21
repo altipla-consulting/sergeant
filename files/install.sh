@@ -158,6 +158,9 @@ fi
 # Global install for vscode plugin.
 sudo cp ~/go/bin/ci /usr/local/bin/ci
 
+# Install: Go tools.
+/usr/local/go/bin/go install github.com/hashicorp/hcl/v2/cmd/hclfmt@latest
+
 # Install: Altipla Packages DEB repository.
 curl https://europe-west1-apt.pkg.dev/doc/repo-signing-key.gpg | sudo apt-key add -
 echo 'deb https://europe-west1-apt.pkg.dev/projects/altipla-packages altipla-apt main' | sudo tee /etc/apt/sources.list.d/altipla-apt.list
