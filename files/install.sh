@@ -212,11 +212,15 @@ sudo apt install -y php8.0-cli
 sudo apt install -y openjdk-11-jdk
 
 # Install: WSL utils.
-if grep -q icrosoft /proc/version; then
-  sudo add-apt-repository ppa:wslutilities/wslu
-  sudo apt update
-  sudo apt install wslu
-  sudo ln -s /usr/bin/wslview /usr/local/bin/xdg-open
+if grep -q icrosoft /proc/version
+then
+  if ! command -v xdg-open &> /dev/null
+  then
+    sudo add-apt-repository -y ppa:wslutilities/wslu
+    sudo apt update
+    sudo apt install -y wslu
+    sudo ln -s /usr/bin/wslview /usr/local/bin/xdg-open
+  fi
 fi
 
 # Install: Autoupdate script.
