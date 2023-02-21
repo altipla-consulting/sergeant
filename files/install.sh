@@ -204,9 +204,9 @@ wget -q -O /tmp/foo.dev https://github.com/benbjohnson/litestream/releases/downl
 sudo dpkg -i /tmp/foo.dev
 rm /tmp/foo.deb
 
-# Install: PHP 7.0.
+# Install: PHP 8.0.
 sudo add-apt-repository -y ppa:ondrej/php
-sudo apt install -y php7.0-cli
+sudo apt install -y php8.0-cli
 
 # Install: Java 11.
 sudo apt install -y openjdk-11-jdk
