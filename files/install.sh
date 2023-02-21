@@ -204,6 +204,11 @@ docker pull europe-west1-docker.pkg.dev/altipla-tools/devcontainers/node:latest
 sudo apt install -y python3-pip
 sudo pip3 install httpie
 
+# Install: Litestream
+wget -q -O /tmp/foo.dev https://github.com/benbjohnson/litestream/releases/download/v0.3.9/litestream-v0.3.9-linux-amd64.deb
+sudo dpkg -i /tmp/foo.dev
+rm /tmp/foo.deb
+
 # Install: PHP 7.0.
 sudo add-apt-repository -y ppa:ondrej/php
 sudo apt install -y php7.0-cli
