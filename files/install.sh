@@ -199,10 +199,6 @@ actools pull
 docker pull europe-west1-docker.pkg.dev/altipla-tools/devcontainers/go:latest
 docker pull europe-west1-docker.pkg.dev/altipla-tools/devcontainers/node:latest
 
-# Install: HTTPie.
-sudo apt install -y python3-pip
-sudo pip3 install httpie
-
 # Install: Litestream
 wget -q -O /tmp/foo.dev https://github.com/benbjohnson/litestream/releases/download/v0.3.9/litestream-v0.3.9-linux-amd64.deb
 sudo dpkg -i /tmp/foo.dev
