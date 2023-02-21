@@ -4,7 +4,7 @@ set -eux
 
 # Move to the HOME directory. The install script could have been run from a different
 # directory and some install commands like NPM or Go require a clean home directory to work.
-cd $HOME
+cd "$HOME"
 
 # Silence SSH logins.
 touch ~/.hushlogin
@@ -31,8 +31,8 @@ if ! command -v go &> /dev/null
 then
   install_go
 fi
-VERSION=`go version | { read _ _ VERSION _; echo ${VERSION#go}; }`
-if [ $VERSION != $WANTED ]
+VERSION=$(go version | { read _ _ VERSION _; echo "${VERSION#go}"; })
+if [ "$VERSION" != $WANTED ]
 then
   install_go
 fi
@@ -48,8 +48,8 @@ if ! command -v buf &> /dev/null
 then
   install_buf
 fi
-VERSION=`buf --version`
-if [ $VERSION != $WANTED ]
+VERSION=$(buf --version)
+if [ "$VERSION" != $WANTED ]
 then
   install_buf
 fi
@@ -64,8 +64,8 @@ if ! command -v docker-compose &> /dev/null
 then
   install_docker_compose
 fi
-VERSION=`docker-compose version --short`
-if [ $VERSION != $WANTED ]
+VERSION=$(docker-compose version --short)
+if [ "$VERSION" != $WANTED ]
 then
   install_docker_compose
 fi
@@ -104,8 +104,8 @@ if ! command -v node &> /dev/null
 then
   install_node
 fi
-VERSION=`node -v | awk -F \. {'print substr($1, 2)'}`
-if [ $VERSION != $WANTED ]
+VERSION=$(node -v | awk -F \. {'print substr($1, 2)'})
+if [ "$VERSION" != $WANTED ]
 then
   install_node
 fi
@@ -132,8 +132,8 @@ if ! command -v stern &> /dev/null
 then
   install_stern
 fi
-VERSION=`stern -v | { read _ _ VERSION; echo $VERSION; }`
-if [ $VERSION != $WANTED ]
+VERSION=$(stern -v | { read _ _ VERSION; echo "$VERSION"; })
+if [ "$VERSION" != $WANTED ]
 then
   install_stern
 fi
@@ -164,7 +164,7 @@ echo 'deb https://europe-west1-apt.pkg.dev/projects/altipla-packages altipla-apt
 sudo apt update
 
 # Install: Preparation for internal CLI tools.
-INSTALLED=`apt -qq list apt-transport-artifact-registry --installed`
+INSTALLED=$(apt -qq list apt-transport-artifact-registry --installed)
 if [ -n "$INSTALLED" ]; then
   curl https://europe-west1-apt.pkg.dev/doc/repo-signing-key.gpg | sudo apt-key add - && curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
   echo 'deb http://packages.cloud.google.com/apt apt-transport-artifact-registry-stable main' | sudo tee /etc/apt/sources.list.d/artifact-registry.list
