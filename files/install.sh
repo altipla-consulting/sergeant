@@ -169,7 +169,8 @@ sudo apt update
 # Install: Preparation for internal CLI tools.
 INSTALLED=$(apt -qq list apt-transport-artifact-registry --installed)
 if [ -n "$INSTALLED" ]; then
-  curl https://europe-west1-apt.pkg.dev/doc/repo-signing-key.gpg | sudo apt-key add - && curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
+  curl https://europe-west1-apt.pkg.dev/doc/repo-signing-key.gpg | sudo apt-key add -
+  curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key --keyring /usr/share/keyrings/cloud.google.gpg add -
   echo 'deb http://packages.cloud.google.com/apt apt-transport-artifact-registry-stable main' | sudo tee /etc/apt/sources.list.d/artifact-registry.list
   sudo apt update
   sudo apt install -y apt-transport-artifact-registry
