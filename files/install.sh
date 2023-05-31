@@ -225,6 +225,9 @@ then
   fi
 fi
 
+# Install: MySQL client.
+sudo apt install -y mysql-client
+
 # Install: Autoupdate script.
 mkdir -p ~/.config/sergeant
 curl -q https://tools.altipla.consulting/sergeant/autoupdate > ~/.config/sergeant/autoupdate.sh
