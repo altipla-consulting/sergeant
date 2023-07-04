@@ -138,6 +138,9 @@ then
   install_stern
 fi
 
+# Scan GitHub SSH keys to install Go packages.
+ssh-keyscan github.com >> ~/.ssh/known_hosts
+
 # Install: Go private packages.
 git config --global url."ssh://git@github.com:".insteadOf "https://github.com"
 /usr/local/go/bin/go env -w GOPRIVATE=github.com/lavozdealmeria,github.com/altipla-consulting,go.buf.build,buf.build,gerrit.altipla.consulting
