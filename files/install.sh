@@ -138,8 +138,9 @@ then
   install_stern
 fi
 
-# Scan GitHub SSH keys to install Go packages.
+# Prescan GitHub & Gerrit SSH keys to install Go packages.
 ssh-keyscan github.com >> ~/.ssh/known_hosts
+ssh-keyscan -p 29418 gerrit.altipla.consulting >> ~/.ssh/known_hosts
 
 # Install: Go private packages.
 git config --global url."ssh://git@github.com:".insteadOf "https://github.com"
