@@ -181,16 +181,12 @@ if [ -n "$INSTALLED" ]; then
 fi
 
 # Install: Gcloud
-if ! command -v gcloud &> /dev/null
+if ! command -v gke-gcloud-auth-plugin &> /dev/null
 then
   echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main" | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
   curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key --keyring /usr/share/keyrings/cloud.google.gpg add -
   sudo apt update
-  sudo apt install -y google-cloud-sdk kubectl
-fi
-if ! command -v gke-gcloud-auth-plugin &> /dev/null
-then
-  sudo apt -y install google-cloud-cli-gke-gcloud-auth-plugin
+  sudo apt install -y google-cloud-sdk kubectl google-cloud-cli-gke-gcloud-auth-plugin
 fi
 gcloud --quiet auth configure-docker europe-west1-docker.pkg.dev,eu.gcr.io,gcr.io
 
