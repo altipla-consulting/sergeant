@@ -257,7 +257,7 @@ fi
   echo
   echo "# Go."
   echo "export GOROOT=/usr/local/go"
-  echo 'export PATH=$PATH:$GOROOT/bin:$HOME/go/bin'
+  echo 'export PATH=$PATH:$GOROOT/bin:$HOME/go/bin:$HOME/bin'
   echo
   echo "# Docker Compose."
   echo "export USR_ID=$(id -u)"
