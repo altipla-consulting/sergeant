@@ -95,19 +95,22 @@ then
 fi
 
 # Install: Node.
-WANTED=16
-function install_node {
-  curl -sL https://deb.nodesource.com/setup_$WANTED.x | sudo -E bash -
-  sudo apt install -y nodejs
-}
-if ! command -v node &> /dev/null
+if ! command -v nvm &> /dev/null
 then
-  install_node
-fi
-VERSION=$(node -v | awk -F \. {'print substr($1, 2)'})
-if [ "$VERSION" != $WANTED ]
-then
-  install_node
+  WANTED=16
+  function install_node {
+    curl -sL https://deb.nodesource.com/setup_$WANTED.x | sudo -E bash -
+    sudo apt install -y nodejs
+  }
+  if ! command -v node &> /dev/null
+  then
+    install_node
+  fi
+  VERSION=$(node -v | awk -F \. {'print substr($1, 2)'})
+  if [ "$VERSION" != $WANTED ]
+  then
+    install_node
+  fi
 fi
 
 # Install: NPM global packages.
