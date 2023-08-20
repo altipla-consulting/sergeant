@@ -240,7 +240,7 @@ curl -q https://tools.altipla.consulting/sergeant/autoupdate > ~/.config/sergean
 chmod +x ~/.config/sergeant/autoupdate.sh
 curl -q https://tools.altipla.consulting/sergeant/release > ~/.config/sergeant/release
 
-# Install: User configuration
+# Install: User configuration.
 if [ ! -f ~/.config/user-bashrc.sh ]
 then
   {
@@ -250,8 +250,20 @@ then
     echo
   } > ~/.config/user-bashrc.sh
 fi
+if command -v zsh &> /dev/null
+then
+  if [ ! -f ~/.config/user-zshrc.sh ]
+  then
+    {
+      echo "#!/bin/zsh"
+      echo
+      echo "# Custom scripts and aliases."
+      echo
+    } > ~/.config/user-zshrc.sh
+  fi
+fi
 
-# Install: .bashrc aliases and helpers
+# Install: .bashrc/.zshrc aliases and helpers.
 {
   echo "#!/bin/bash"
   echo
@@ -288,6 +300,47 @@ if ! grep '.config/machine-bashrc.sh' ~/.bashrc
 then
   echo 'source ~/.config/machine-bashrc.sh' >> ~/.bashrc
   echo 'source ~/.config/user-bashrc.sh' >> ~/.bashrc
+fi
+
+if command -v zsh &> /dev/null
+then
+  {
+    echo "#!/bin/zsh"
+    echo
+    echo "# Go."
+    echo "export GOROOT=/usr/local/go"
+    echo 'export PATH=$PATH:$GOROOT/bin:$HOME/go/bin:$HOME/bin'
+    echo
+    echo "# Docker Compose."
+    echo "export USR_ID=$(id -u)"
+    echo "export GRP_ID=$(id -g)"
+    echo "alias dc='docker compose'"
+    echo "alias dcrun='docker compose run --rm'"
+    echo "alias dps='docker ps --format=\"table {{.ID}}\t{{.Names}}\t{{.Ports}}\t{{.Status}}\"'"
+    echo
+    echo "# Gcloud."
+    echo "alias compute='gcloud compute'"
+    echo "export KUBE_EDITOR=nano"
+    echo "export USE_GKE_GCLOUD_AUTH_PLUGIN=True"
+    echo "alias k='kubectl'"
+    echo "alias kls='kubectl config get-contexts'"
+    echo "alias kuse='kubectl config use-context'"
+    echo "alias kpods='kubectl get pods --field-selector=status.phase!=Succeeded -o wide'"
+    echo "alias knodes='kubectl get nodes -o wide'"
+    echo "source <(kubectl completion bash | sed 's/kubectl/k/g')"
+    echo
+    echo "# Disable Docket Desktop ads."
+    echo 'export DOCKER_SCAN_SUGGEST=false'
+    echo
+    echo "# Autoupdate"
+    echo "~/.config/sergeant/autoupdate.sh"
+    echo
+  } > ~/.config/machine-zshrc.sh
+  if ! grep '.config/machine-zshrc.sh' ~/.zshrc
+  then
+    echo 'source ~/.config/machine-zshrc.sh' >> ~/.zshrc
+    echo 'source ~/.config/user-zshrc.sh' >> ~/.zshrc
+  fi
 fi
 
 set +eux
