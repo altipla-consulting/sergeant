@@ -341,7 +341,10 @@ then
     echo "alias knodes='kubectl get nodes -o wide'"
     echo "source <(kubectl completion bash | sed 's/kubectl/k/g')"
     echo
-    echo "# Disable Docket Desktop ads."
+    echo "# pnpm"
+    echo "alias pn='pnpm'"
+    echo
+    echo "# Disable Docker Desktop ads."
     echo 'export DOCKER_SCAN_SUGGEST=false'
     echo
     echo "# Autoupdate"
