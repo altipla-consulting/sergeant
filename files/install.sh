@@ -130,6 +130,9 @@ sudo npm install -g --unsafe-perm=true netlify-cli@latest
 # Install: Cloudflare Wrangler.
 sudo npm install -g wrangler
 
+# Install: pnpm
+curl -fsSL https://get.pnpm.io/install.sh | sh -
+
 # Install: stern.
 WANTED=1.11.0
 function install_stern {
