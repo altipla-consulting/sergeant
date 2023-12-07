@@ -119,16 +119,24 @@ then
   fi
 fi
 
-# Install: NPM global packages.
-sudo rm -rf /usr/lib/node_modules/yarn /usr/lib/node_modules/netlify-cli
-# We need to install NPM in a different batch because any update will make
-# the next packages to miss the files npm itself needs because of the update.
-sudo npm install -g npm@latest
-sudo npm install -g yarn@latest
-sudo npm install -g --unsafe-perm=true netlify-cli@latest
+function install_node_packages {
+  # Install: NPM global packages.
+  sudo rm -rf /usr/lib/node_modules/yarn /usr/lib/node_modules/netlify-cli
 
-# Install: Cloudflare Wrangler.
-sudo npm install -g wrangler
+  # We need to install NPM in a different batch because any update will make
+  # the next packages to miss the files npm itself needs because of the update.
+  npm install -g npm@latest
+  npm install -g yarn@latest
+  npm install -g --unsafe-perm=true netlify-cli@la
+
+  # Install: Cloudflare Wrangler.
+  npm install -g wrangler
+}
+if !command -v nvm &> /dev/null
+then
+  sudo install_node_packages
+else
+  install_node_packages
 
 # Install: pnpm
 curl -fsSL https://get.pnpm.io/install.sh | sh -
