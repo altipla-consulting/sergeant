@@ -121,10 +121,10 @@ fi
 
 # Install: NPM global packages.
 sudo rm -rf /usr/lib/node_modules/yarn /usr/lib/node_modules/netlify-cli
-# We need to install NPM in a different batch because any update will make
-# the next packages to miss the files npm itself needs because of the update.
 if ! command -v nvm &> /dev/null
 then
+  # We need to install NPM in a different batch because any update will make
+  # the next packages to miss the files npm itself needs because of the update.
   sudo npm install -g npm@latest
   sudo npm install -g yarn@latest
   sudo npm install -g --unsafe-perm=true netlify-cli@latest
@@ -132,8 +132,6 @@ then
   # Install: Cloudflare Wrangler.
   sudo npm install -g wrangler
 else
-  npm install -g npm@latest
-  npm install -g yarn@latest
   npm install -g --unsafe-perm=true netlify-cli@latest
 
   npm install -g wrangler
