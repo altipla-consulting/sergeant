@@ -132,7 +132,7 @@ then
   # Install: Cloudflare Wrangler.
   sudo npm install -g wrangler
 else
-  npm install -g --unsafe-perm=true netlify-cli@latest
+  npm install -g netlify-cli@latest
 
   npm install -g wrangler
 fi
