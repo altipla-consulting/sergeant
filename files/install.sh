@@ -94,8 +94,17 @@ then
   chmod +x /usr/local/bin/mkcert
 fi
 
+function nvm_installed {
+  if [ -z "${NVM_DIR-}" ]
+  then
+    return 1
+  else
+    return 0
+  fi
+}
+
 # Install: Node.
-if ! command -v nvm &> /dev/null
+if ! nvm_installed
 then
   WANTED=18
   function install_node {
@@ -121,7 +130,7 @@ fi
 
 # Install: NPM global packages.
 sudo rm -rf /usr/lib/node_modules/yarn /usr/lib/node_modules/netlify-cli
-if ! command -v nvm &> /dev/null
+if ! nvm_installed
 then
   # We need to install NPM in a different batch because any update will make
   # the next packages to miss the files npm itself needs because of the update.
