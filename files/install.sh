@@ -38,7 +38,7 @@ then
 fi
 
 # Install: Buf.
-WANTED=1.14.0
+WANTED=1.32.1
 function install_buf {
   curl -sSL "https://github.com/bufbuild/buf/releases/download/v${WANTED}/buf-Linux-x86_64" -o /tmp/buf
   sudo mv /tmp/buf /usr/local/bin/buf
@@ -52,22 +52,6 @@ VERSION=$(buf --version)
 if [ "$VERSION" != $WANTED ]
 then
   install_buf
-fi
-
-# Install: Docker Compose.
-WANTED=1.25.4
-function install_docker_compose {
-  sudo curl -L "https://github.com/docker/compose/releases/download/$WANTED/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-  sudo chmod +x /usr/local/bin/docker-compose
-}
-if ! command -v docker-compose &> /dev/null
-then
-  install_docker_compose
-fi
-VERSION=$(docker-compose version --short)
-if [ "$VERSION" != $WANTED ]
-then
-  install_docker_compose
 fi
 
 # Install: Error fix that increases the Linux kernel quota of allowed watchers. They are too low by default on Ubuntu.
@@ -106,7 +90,7 @@ function nvm_installed {
 # Install: Node.
 if ! nvm_installed
 then
-  WANTED=18
+  WANTED=20
   function install_node {
     if [ ! -d "/etc/apt/keyrings" ]
     then
