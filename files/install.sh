@@ -133,23 +133,6 @@ fi
 # Install: pnpm
 curl -fsSL https://get.pnpm.io/install.sh | sh -
 
-# Install: stern.
-WANTED=1.11.0
-function install_stern {
-  curl -L -o /tmp/stern https://github.com/wercker/stern/releases/download/$WANTED/stern_linux_amd64
-  sudo mv /tmp/stern /usr/local/bin/stern
-  chmod +x /usr/local/bin/stern
-}
-if ! command -v stern &> /dev/null
-then
-  install_stern
-fi
-VERSION=$(stern -v | { read _ _ VERSION; echo "$VERSION"; })
-if [ "$VERSION" != $WANTED ]
-then
-  install_stern
-fi
-
 # Prescan GitHub & Gerrit SSH keys to install Go packages.
 ssh-keyscan github.com >> ~/.ssh/known_hosts
 ssh-keyscan -p 29418 gerrit.altipla.consulting >> ~/.ssh/known_hosts
