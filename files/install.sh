@@ -148,6 +148,7 @@ git config --global url."ssh://git@github.com:".insteadOf "https://github.com"
 /usr/local/go/bin/go install github.com/altipla-consulting/linter@latest
 /usr/local/go/bin/go install github.com/altipla-consulting/ci@latest
 /usr/local/go/bin/go install github.com/mattn/goreman@latest
+/usr/local/go/bin/go install github.com/stern/stern@latest
 curl 'https://packages.altipla.consulting/whisper/install.sh' | bash
 curl 'https://packages.altipla.consulting/nebula/install.sh' | bash
 curl 'https://packages.altipla.consulting/cota/install.sh' | bash
