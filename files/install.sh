@@ -133,6 +133,23 @@ fi
 # Install: pnpm
 curl -fsSL https://get.pnpm.io/install.sh | sh -
 
+# Install Azure CLI
+sudo apt remove azure-cli -y && sudo apt autoremove -y
+sudo apt-get install -y apt-transport-https ca-certificates curl gnupg lsb-release
+sudo mkdir -p /etc/apt/keyrings
+curl -sLS https://packages.microsoft.com/keys/microsoft.asc |
+  gpg --dearmor | sudo tee /etc/apt/keyrings/microsoft.gpg > /dev/null
+sudo chmod go+r /etc/apt/keyrings/microsoft.gpg
+AZ_DIST=$(lsb_release -cs)
+echo "Types: deb
+URIs: https://packages.microsoft.com/repos/azure-cli/
+Suites: ${AZ_DIST}
+Components: main
+Architectures: $(dpkg --print-architecture)
+Signed-by: /etc/apt/keyrings/microsoft.gpg" | sudo tee /etc/apt/sources.list.d/azure-cli.sources
+sudo apt-get update
+sudo apt-get install -y azure-cli
+
 # Prescan GitHub & Gerrit SSH keys to install Go packages.
 ssh-keyscan github.com >> ~/.ssh/known_hosts
 ssh-keyscan -p 29418 gerrit.altipla.consulting >> ~/.ssh/known_hosts
@@ -149,6 +166,7 @@ git config --global url."ssh://git@github.com:".insteadOf "https://github.com"
 /usr/local/go/bin/go install github.com/altipla-consulting/ci@latest
 /usr/local/go/bin/go install github.com/mattn/goreman@latest
 /usr/local/go/bin/go install github.com/stern/stern@latest
+/usr/local/go/bin/go install github.com/Azure/kubelogin@latest
 curl 'https://packages.altipla.consulting/whisper/install.sh' | bash
 curl 'https://packages.altipla.consulting/nebula/install.sh' | bash
 curl 'https://packages.altipla.consulting/cota/install.sh' | bash
