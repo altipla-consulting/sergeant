@@ -218,6 +218,10 @@ unzip -q awscliv2.zip
 sudo ./aws/install --update
 rm -rf awscliv2.zip aws
 
+# Install: Azure CLI.
+curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+/usr/local/go/bin/go install github.com/Azure/kubelogin@latest
+
 # Install: WSL utils.
 if grep -q icrosoft /proc/version
 then
