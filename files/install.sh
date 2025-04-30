@@ -10,7 +10,7 @@ cd "$HOME"
 touch ~/.hushlogin
 
 # Basic global setup.
-sudo apt update
+sudo apt update --allow-releaseinfo-change
 sudo apt install -y wget tar curl autoconf jq git build-essential libnss3-tools unzip ca-certificates gnupg
 echo 'Acquire::AllowUnsizedPackages true;' | sudo tee /etc/apt/apt.conf.d/50unsized
 
