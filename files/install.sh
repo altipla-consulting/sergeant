@@ -195,10 +195,6 @@ wget -q -O /tmp/litestream.deb https://github.com/benbjohnson/litestream/release
 sudo dpkg -i /tmp/litestream.deb
 rm /tmp/litestream.deb
 
-# Install: PHP 8.0.
-sudo add-apt-repository -y ppa:ondrej/php
-sudo apt install -y php8.0-cli
-
 # Install: Java 11.
 sudo apt install -y openjdk-11-jdk
 
