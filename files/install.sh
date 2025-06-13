@@ -150,8 +150,6 @@ git config --global url."ssh://git@github.com:".insteadOf "https://github.com"
 /usr/local/go/bin/go install github.com/mattn/goreman@latest
 /usr/local/go/bin/go install github.com/stern/stern@latest
 curl 'https://packages.altipla.consulting/whisper/install.sh' | bash
-curl 'https://packages.altipla.consulting/nebula/install.sh' | bash
-curl 'https://packages.altipla.consulting/cota/install.sh' | bash
 if ! command -v gaestage &> /dev/null
 then
   curl https://europe-west1-apt.pkg.dev/doc/repo-signing-key.gpg | sudo apt-key add -
