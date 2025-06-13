@@ -191,9 +191,9 @@ fi
 gcloud --quiet auth configure-docker europe-west1-docker.pkg.dev,eu.gcr.io,gcr.io
 
 # Install: Litestream
-wget -q -O /tmp/foo.deb https://github.com/benbjohnson/litestream/releases/download/v0.3.9/litestream-v0.3.9-linux-amd64.deb
-sudo dpkg -i /tmp/foo.deb
-rm /tmp/foo.deb
+wget -q -O /tmp/litestream.deb https://github.com/benbjohnson/litestream/releases/download/v0.3.9/litestream-v0.3.13-linux-amd64.deb
+sudo dpkg -i /tmp/litestream.deb
+rm /tmp/litestream.deb
 
 # Install: PHP 8.0.
 sudo add-apt-repository -y ppa:ondrej/php
