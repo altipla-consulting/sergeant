@@ -190,16 +190,6 @@ then
 fi
 gcloud --quiet auth configure-docker europe-west1-docker.pkg.dev,eu.gcr.io,gcr.io
 
-# Install: actools.
-curl -L -o /tmp/actools https://tools.altipla.consulting/bin/actools
-sudo mv /tmp/actools /usr/local/bin/actools
-chmod +x /usr/local/bin/actools
-actools pull
-
-# Update devcontainers.
-docker pull europe-west1-docker.pkg.dev/altipla-tools/devcontainers/go:latest
-docker pull europe-west1-docker.pkg.dev/altipla-tools/devcontainers/node:latest
-
 # Install: Litestream
 wget -q -O /tmp/foo.deb https://github.com/benbjohnson/litestream/releases/download/v0.3.9/litestream-v0.3.9-linux-amd64.deb
 sudo dpkg -i /tmp/foo.deb
