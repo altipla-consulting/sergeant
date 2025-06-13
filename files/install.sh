@@ -186,7 +186,7 @@ then
   sudo apt update
   sudo apt install -y google-cloud-sdk kubectl google-cloud-cli-gke-gcloud-auth-plugin
 fi
-gcloud --quiet auth configure-docker europe-west1-docker.pkg.dev,eu.gcr.io,gcr.io
+gcloud --quiet auth configure-docker europe-west1-docker.pkg.dev
 
 # Install: Litestream
 wget -q -O /tmp/litestream.deb https://github.com/benbjohnson/litestream/releases/download/v0.3.13/litestream-v0.3.13-linux-amd64.deb
