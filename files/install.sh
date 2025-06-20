@@ -38,7 +38,7 @@ then
 fi
 
 # Install: Buf.
-WANTED=1.33.0
+WANTED=1.55.1
 function install_buf {
   curl -sSL "https://github.com/bufbuild/buf/releases/download/v${WANTED}/buf-Linux-x86_64" -o /tmp/buf
   sudo mv /tmp/buf /usr/local/bin/buf
