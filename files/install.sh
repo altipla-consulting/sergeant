@@ -20,7 +20,7 @@ sudo apt upgrade -y
 sudo apt autoremove -y
 
 # Install: Go.
-WANTED=1.24.0
+WANTED=1.25.1
 function install_go {
   sudo rm -rf /usr/local/go
   wget -q -O /tmp/go.tar.gz "https://dl.google.com/go/go${WANTED}.linux-amd64.tar.gz"
