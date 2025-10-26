@@ -206,6 +206,9 @@ rm -rf awscliv2.zip aws
 curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
 /usr/local/go/bin/go install github.com/Azure/kubelogin@latest
 
+# Install: uv Python package manager.
+curl -LsSf https://astral.sh/uv/install.sh | sh
+
 # Install: WSL utils.
 if grep -q icrosoft /proc/version
 then
