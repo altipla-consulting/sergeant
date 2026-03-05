@@ -209,6 +209,12 @@ curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
 # Install: uv Python package manager.
 curl -LsSf https://astral.sh/uv/install.sh | sh
 
+# Install: Cloudflared
+curl -fsSL https://pkg.cloudflare.com/cloudflare-main.gpg | sudo tee /usr/share/keyrings/cloudflare-main.gpg >/dev/null
+echo 'deb [signed-by=/usr/share/keyrings/cloudflare-main.gpg] https://pkg.cloudflare.com/cloudflared noble main' | sudo tee /etc/apt/sources.list.d/cloudflared.list
+sudo apt update
+sudo apt install -y cloudflared
+
 # Install: WSL utils.
 if grep -q icrosoft /proc/version
 then
