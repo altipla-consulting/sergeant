@@ -118,6 +118,13 @@ if ! nvm_installed
 then
   # We need to install NPM in a different batch because any update will make
   # the next packages to miss the files npm itself needs because of the update.
+
+  # There is currently a bug where upgrading npm directly from v10 to v11 fails.
+  # An intermediate version is needed to avoid the issue. https://github.com/npm/cli/issues/9151
+  NPM_MAJOR=$(npm --version | cut -d. -f1)
+  if [ "$NPM_MAJOR" -lt 11 ]; then
+    sudo npm install -g npm@10.9.8
+  fi
   sudo npm install -g npm@latest
   sudo npm install -g yarn@latest
   sudo npm install -g --unsafe-perm=true netlify-cli@latest
