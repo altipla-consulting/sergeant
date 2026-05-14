@@ -227,12 +227,7 @@ if grep -q icrosoft /proc/version
 then
   if ! command -v xdg-open &> /dev/null
   then
-    codename=$(lsb_release -cs)
-    if [ "$codename" = "resolute" ]; then
-      sudo add-apt-repository -y "deb http://ppa.launchpad.net/wslutilities/wslu/ubuntu noble main"
-    else
-      sudo add-apt-repository -y ppa:wslutilities/wslu
-    fi
+    sudo add-apt-repository -y "deb http://ppa.launchpad.net/wslutilities/wslu/ubuntu noble main"
     sudo apt update
     sudo apt install -y wslu
     sudo ln -s /usr/bin/wslview /usr/local/bin/xdg-open
