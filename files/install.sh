@@ -90,7 +90,7 @@ function nvm_installed {
 # Install: Node.
 if ! nvm_installed
 then
-  WANTED=22
+  WANTED=24
   function install_node {
     if [ ! -d "/etc/apt/keyrings" ]
     then
