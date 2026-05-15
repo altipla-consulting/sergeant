@@ -159,8 +159,8 @@ git config --global url."ssh://git@github.com:".insteadOf "https://github.com"
 curl 'https://packages.altipla.consulting/whisper/install.sh' | bash
 if ! command -v gaestage &> /dev/null
 then
-  curl https://europe-west1-apt.pkg.dev/doc/repo-signing-key.gpg | sudo apt-key add -
-  echo 'deb https://europe-west1-apt.pkg.dev/projects/altipla-tools acpublic main' | sudo tee /etc/apt/sources.list.d/acpublic.list
+  curl -fsSL https://europe-west1-apt.pkg.dev/doc/repo-signing-key.gpg | sudo gpg --dearmor --yes -o /etc/apt/keyrings/artifact-registry.gpg
+  echo 'deb [signed-by=/etc/apt/keyrings/artifact-registry.gpg] https://europe-west1-apt.pkg.dev/projects/altipla-tools acpublic main' | sudo tee /etc/apt/sources.list.d/acpublic.list
   sudo apt update
   sudo apt install -y tools/acpublic
 fi
@@ -171,16 +171,16 @@ sudo cp ~/go/bin/ci /usr/local/bin/ci
 /usr/local/go/bin/go install github.com/hashicorp/hcl/v2/cmd/hclfmt@latest
 
 # Install: Altipla Packages DEB repository.
-curl https://europe-west1-apt.pkg.dev/doc/repo-signing-key.gpg | sudo apt-key add -
-echo 'deb https://europe-west1-apt.pkg.dev/projects/altipla-packages altipla-apt main' | sudo tee /etc/apt/sources.list.d/altipla-apt.list
+curl -fsSL https://europe-west1-apt.pkg.dev/doc/repo-signing-key.gpg | sudo gpg --dearmor --yes -o /etc/apt/keyrings/artifact-registry.gpg
+echo 'deb [signed-by=/etc/apt/keyrings/artifact-registry.gpg] https://europe-west1-apt.pkg.dev/projects/altipla-packages altipla-apt main' | sudo tee /etc/apt/sources.list.d/altipla-apt.list
 sudo apt update
 
 # Install: Preparation for internal CLI tools.
 INSTALLED=$(apt -qq list apt-transport-artifact-registry --installed)
 if [ -n "$INSTALLED" ]; then
-  curl https://europe-west1-apt.pkg.dev/doc/repo-signing-key.gpg | sudo apt-key add -
-  curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key --keyring /usr/share/keyrings/cloud.google.gpg add -
-  echo 'deb http://packages.cloud.google.com/apt apt-transport-artifact-registry-stable main' | sudo tee /etc/apt/sources.list.d/artifact-registry.list
+  curl -fsSL https://europe-west1-apt.pkg.dev/doc/repo-signing-key.gpg | sudo gpg --dearmor --yes -o /etc/apt/keyrings/artifact-registry.gpg
+  curl -fsSL https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo gpg --dearmor --yes -o /usr/share/keyrings/cloud.google.gpg
+  echo 'deb [signed-by=/usr/share/keyrings/cloud.google.gpg] http://packages.cloud.google.com/apt apt-transport-artifact-registry-stable main' | sudo tee /etc/apt/sources.list.d/artifact-registry.list
   sudo apt update
   sudo apt install -y apt-transport-artifact-registry
 fi
@@ -189,7 +189,7 @@ fi
 if ! command -v gke-gcloud-auth-plugin &> /dev/null
 then
   echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main" | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
-  curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key --keyring /usr/share/keyrings/cloud.google.gpg add -
+  curl -fsSL https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo gpg --dearmor --yes -o /usr/share/keyrings/cloud.google.gpg
   sudo apt update
   sudo apt install -y google-cloud-sdk kubectl google-cloud-cli-gke-gcloud-auth-plugin
 fi
@@ -227,7 +227,7 @@ if grep -q icrosoft /proc/version
 then
   if ! command -v xdg-open &> /dev/null
   then
-    sudo add-apt-repository -y ppa:wslutilities/wslu
+    sudo add-apt-repository -y "deb http://ppa.launchpad.net/wslutilities/wslu/ubuntu noble main"
     sudo apt update
     sudo apt install -y wslu
     sudo ln -s /usr/bin/wslview /usr/local/bin/xdg-open
