@@ -88,8 +88,11 @@ function nvm_installed {
 }
 
 # Install: Node.
-if ! nvm_installed
+if nvm_installed
 then
+  nvm install 24
+  nvm alias default 24
+else
   WANTED=24
   function install_node {
     if [ ! -d "/etc/apt/keyrings" ]
