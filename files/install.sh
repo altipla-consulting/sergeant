@@ -79,17 +79,17 @@ then
 fi
 
 function nvm_installed {
-  if [ -z "${NVM_DIR-}" ]
-  then
-    return 1
-  else
+  export NVM_DIR="${NVM_DIR:-$HOME/.nvm}"
+  if [ -s "${NVM_DIR}/nvm.sh" ]; then
     return 0
   fi
+  return 1
 }
 
 # Install: Node.
 if nvm_installed
 then
+  . "${NVM_DIR}/nvm.sh"
   nvm install 24
   nvm alias default 24
 else
