@@ -130,7 +130,7 @@ then
   fi
   sudo npm install -g npm@latest
   sudo npm install -g yarn@latest
-  sudo npm install -g --unsafe-perm=true netlify-cli@latest
+  sudo npm install -g netlify-cli@latest
 
   # Install: Cloudflare Wrangler.
   sudo npm install -g wrangler
