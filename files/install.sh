@@ -285,7 +285,6 @@ fi
   echo "alias compute='gcloud compute'"
   echo "export KUBE_EDITOR=nano"
   echo "export USE_GKE_GCLOUD_AUTH_PLUGIN=True"
-  echo "source <(kubectl completion bash)"
   echo
   echo "# pnpm"
   echo "alias pn='pnpm'"
@@ -323,7 +322,6 @@ then
     echo "alias compute='gcloud compute'"
     echo "export KUBE_EDITOR=nano"
     echo "export USE_GKE_GCLOUD_AUTH_PLUGIN=True"
-    echo "source <(kubectl completion zsh)"
     echo
     echo "# pnpm"
     echo "alias pn='pnpm'"
