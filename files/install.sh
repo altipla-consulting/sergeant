@@ -281,12 +281,6 @@ fi
   echo "alias dcrun='docker compose run --rm'"
   echo "alias dps='docker ps --format=\"table {{.ID}}\t{{.Names}}\t{{.Ports}}\t{{.Status}}\"'"
   echo
-  echo "# Gcloud."
-  echo "alias compute='gcloud compute'"
-  echo "export KUBE_EDITOR=nano"
-  echo "export USE_GKE_GCLOUD_AUTH_PLUGIN=True"
-  echo "source <(kubectl completion bash)"
-  echo
   echo "# pnpm"
   echo "alias pn='pnpm'"
   echo
