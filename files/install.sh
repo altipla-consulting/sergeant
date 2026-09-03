@@ -192,7 +192,7 @@ fi
 echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main" | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
 curl -fsSL https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo gpg --dearmor --yes -o /usr/share/keyrings/cloud.google.gpg
 sudo apt update
-sudo apt install -y google-cloud-sdk kubectl google-cloud-cli-gke-gcloud-auth-plugin google-cloud-cli-app-engine-grpc
+sudo apt install -y google-cloud-cli kubectl google-cloud-cli-gke-gcloud-auth-plugin google-cloud-cli-app-engine-grpc
 gcloud --quiet auth configure-docker europe-west1-docker.pkg.dev
 
 # Install: Litestream
